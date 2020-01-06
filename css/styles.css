@@ -36,12 +36,17 @@
 
 .header-text {
   padding: 10px;
-  /* font-weight: lighter; */
 }
 
 .heading {
   margin: 20px;
   padding: 5px 20px;
+}
+
+.title-left-pane {
+  width: 90%;
+  display: inline-block;
+  margin-bottom: -12px;
 }
 
 .nav {
@@ -101,7 +106,8 @@
   text-align: left;
   background-color: #f1f1f1;
   min-width: 130px;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-left: 15px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -185,57 +191,26 @@ body {
   margin-bottom: 20px;
 }
 
-.filters .search {
-  display: inline;
+.filters {
+  margin-bottom: 15px;
 }
 
-.search-box {
-  border-radius: 150px;
-  background-color: blueviolet;
-  font-family: "Source Sans Pro", sans-serif;
-  color: white;
-  border-color: white;
-  padding: 3px 5px;
-  font-size: 18px;
-  text-align: center;
-  width: 50%;
-}
-
-::placeholder {
-  color: lightgray;
-  font-style: italic;
-  opacity: 1;
-}
-
-:-ms-input-placeholder {
-  color: lightgray;
-  font-style: italic;
-}
-
-::-ms-input-placeholder {
-  color: lightgray;
-  font-style: italic;
-}
-
-.search-button {
-  border-radius: 150px;
-  background-color: blueviolet;
-  font-family: "Source Sans Pro", sans-serif;
-  color: white;
-  border-color: white;
-  padding: 3px 5px;
-  font-size: 18px;
-}
-
-.filters .categories {
-  float: right;
+.filters .filter-cat,
+.filter-dept,
+.filter-level {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
+}
+
+.filter-dept,
+.filter-cat {
+  margin: 0px 80px;
 }
 
 .categories-list {
   background-color: blueviolet;
   border-radius: 150px;
+  width: 160px;
   color: white;
   border-color: white;
   font-family: "Source Sans Pro", sans-serif;
@@ -312,6 +287,7 @@ th {
   background-color: blueviolet;
   overflow: hidden;
   border-top: none;
+  padding: 10px 3px;
 }
 
 tr a {
@@ -327,7 +303,6 @@ tr a:hover {
 
 tr:hover {
   background-color: hsl(0, 0%, 89%);
-  color: blueviolet;
   border-radius: 6px;
 }
 
@@ -338,16 +313,29 @@ th:first-child {
 
 footer {
   width: 100%;
-  height: 100px;
-  background-color: rgb(19, 19, 19);
+  margin-top: 100px;
+  background-color: rgb(15, 15, 15);
   color: lightgrey;
+}
+
+footer .quick-links {
+  background-color: rgb(40, 40, 40);
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 13px;
+  padding: 10px 0px;
+}
+
+footer .quick-links a {
+  color: rgb(221, 221, 221);
+  text-decoration: none;
 }
 
 footer .contents {
   color: lightgray;
   font-size: 13px;
   margin: 5px;
-  padding: 5px;
+  padding: 10px 10px;
 }
 
 footer .copyright-notes {

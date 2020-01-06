@@ -10,14 +10,20 @@
   <link href="css/styles.css" rel="stylesheet">
   <title>Complaints</title>
   <header class="top-bar">
-    <span class="logo">
-      <img class="header-image" src="assets/logo_p.png" alt="Government of Andra Pradesh"></img>
+    <span class="title-left-pane">
+      <span class="logo">
+        <img class="header-image" src="assets/logo_p.png" alt="Government of Andhra Pradesh"></img>
+      </span>
+      <span class="branding">
+        <h1 class="header-text">
+          Government of Andhra Pradesh <br />
+          ఆంధ్రప్రదేశ్ ప్రభుత్వం </br>
+        </h1>
+      </span>
     </span>
-    <span class="branding">
-      <h1 class="header-text">
-        Government of Andra Pradesh <br />
-        ఆంధ్రప్రదేశ్ ప్రభుత్వం </br>
-      </h1>
+    <span class="date-time">
+      <iframe src="http://free.timeanddate.com/clock/i73ldroc/n553/fn16/fcfff/tct/pct/tt0/tw0/tm1/td2/th2/tb4"
+        frameborder="0" width="84" height="34" allowTransparency="true"></iframe>
     </span>
     <span class="nav-bar">
       <h2>
@@ -56,90 +62,101 @@
 
 <body>
   <div class="container">
-    <form class="filters" action="filter.php">
-      <span class="search">
-        <input class="search-box" type="text" name="search" placeholder="Search">
-        <button class="search-button"><i class="material-icons-outlined md-18">search</i></button>
-      </span>
-      <span class="categories">Categories:
+    <form class="filters" action="">
+      <span class="filter-level">Level:
         <select class="categories-list">
           <div class="options">
-            <option class="option" value="Category1">Category1</option>
-            <option class="option" value="Category2">Category2</option>
-            <option class="option" value="Category3">Category3</option>
-            <option class="option" value="Category4">Category4</option>
+            <option class="option" value="university">All</option>
+            <option class="option" value="university">Univesity</option>
+            <option class="option" value="institute">Institute</option>
+            <option class="option" value="department">Department</option>
           </div>
         </select>
-        <button class="button-small"><i class="material-icons-outlined md-18">arrow_forward_ios</i></button></span>
+        <span class="filter-dept">Department:
+          <select class="categories-list">
+            <div class="options">
+              <option class="option" value="admission">All</option>
+              <option class="option" value="admission">Admission</option>
+              <option class="option" value="exams">Exams</option>
+              <option class="option" value="finance">Finance</option>
+              <option class="option" value="ragging">Ragging</option>
+              <option class="option" value="others">Others</option>
+            </div>
+          </select>
+          <span class="filter-cat">Key words:
+            <select class="categories-list">
+              <div class="options">
+                <option class="option" value="Food">All</option>
+                <option class="option" value="Food">Food</option>
+                <option class="option" value="Quality">Quality</option>
+                <option class="option" value="Staff">Staff</option>
+                <option class="option" value="Receipt">Receipt</option>
+                <option class="option" value="Uncategorized">Uncategorized</option>
+              </div>
+            </select>
+            <button class="button-small"><i class="material-icons-outlined md-18">arrow_forward_ios</i></button></span>
     </form>
 
     <table class="list-table">
       <thead>
-        <th><i class="material-icons-outlined md-18">indeterminate_check_box</i></th>
-        <th><i class="material-icons-outlined md-18">star_border</i></th>
         <th style="width:8%">Date</th>
-        <th style="width:50%;">Subject</th>
-        <th style="width:25%">College</th>
-        <th>Quick Action</th>
+        <th style="width:60%;">Subject</th>
+        <th>Key words</th>
         <th>Status</th>
       </thead>
       <tr href="" class="table-data">
-        <td><input type="checkbox"></td>
-        <td><i class="material-icons-outlined md-18">star</i></td>
         <td>Date</td>
         <td> <a href="">Subject</a></td>
         <td>Department</td>
-        <td>Quick Action</td>
         <td>Status</td>
       </tr>
       <tr href="" class="table-data">
-        <td><input type="checkbox"></td>
-        <td><i class="material-icons-outlined md-18">star</i></td>
         <td>Date</td>
         <td> <a href="">Subject</a></td>
         <td>Department</td>
-        <td>Quick Action</td>
         <td>Status</td>
       </tr>
       <tr href="" class="table-data">
-        <td><input type="checkbox"></td>
-        <td><i class="material-icons-outlined md-18">star</i></td>
         <td>Date</td>
         <td> <a href="">Subject</a></td>
         <td>Department</td>
-        <td>Quick Action</td>
         <td>Status</td>
       </tr>
       <tr href="" class="table-data">
-        <td><input type="checkbox"></td>
-        <td><i class="material-icons-outlined md-18">star</i></td>
         <td>Date</td>
         <td> <a href="">Subject</a></td>
         <td>Department</td>
-        <td>Quick Action</td>
         <td>Status</td>
       </tr>
       <tr href="" class="table-data">
-        <td><input type="checkbox"></td>
-        <td><i class="material-icons-outlined md-18">star</i></td>
         <td>Date</td>
         <td> <a href="">Subject</a></td>
         <td>Department</td>
-        <td>Quick Action</td>
         <td>Status</td>
       </tr>
     </table>
   </div>
 </body>
 <footer class="footer">
+  <div class="quick-links">
+    <p>
+      <a href="home.php">Home</a> |
+      <a href="Contact.html">Contact</a> |
+      <a href="Feedback.html">Feedback</a> |
+      <a href="privacy.html">Privacy</a>
+    </p>
+  </div>
   <div class="contents">
     <p class="footer-text">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ipsa sapiente, placeat minima ducimus minus
-      dolore quo, voluptas exercitationem neque quisquam omnis commodi magnam nobis incidunt cum veniam. Velit, eveniet!
+      dolore quo, voluptas exercitationem neque quisquam omnis commodi magnam nobis incidunt cum veniam. Velit,
+      eveniet!
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem vel, laudantium, corrupti temporibus
-      dolorem optio blanditiis minus impedit praesentium modi unde numquam ipsa asperiores cupiditate veritatis dolores
+      dolorem optio blanditiis minus impedit praesentium modi unde numquam ipsa asperiores cupiditate veritatis
+      dolores
       sed fugit recusandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. A dignissimos facere minus,
-      nesciunt magnam libero sapiente ad animi hic autem in voluptatibus nam? A quia aperiam voluptas, neque accusantium
+      nesciunt magnam libero sapiente ad animi hic autem in voluptatibus nam? A quia aperiam voluptas, neque
+      accusantium
       ea!
     </p>
   </div>

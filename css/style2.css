@@ -43,6 +43,12 @@
   padding: 5px 20px;
 }
 
+.title-left-pane {
+  width: 90%;
+  display: inline-block;
+  margin-bottom: -12px;
+}
+
 .nav {
   float: inline;
   background-color: blueviolet;
@@ -100,7 +106,8 @@
   text-align: left;
   background-color: #f1f1f1;
   min-width: 130px;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-left: 15px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -135,41 +142,7 @@
 .page-head {
   margin-left: 45%;
   margin-top: 15px;
-  padding: 5px 10px;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 150px;
-  background-color: blueviolet;
-  font-family: "Source Sans Pro";
-  font-size: 30px;
-  color: white;
-}
-
-.logo {
-  float: left;
-}
-
-.branding {
-  float: inline;
-}
-
-.header-image {
-  padding: 10px;
-}
-
-.header-text {
-  padding: 10px;
-}
-
-.heading {
-  margin: 20px;
-  padding: 5px 20px;
-}
-
-.page-head {
-  margin-left: 45%;
-  margin-top: 15px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   text-align: center;
   vertical-align: middle;
   border-radius: 150px;
@@ -301,9 +274,9 @@ table .left {
 .button-positive {
   width: 170px;
   background-color: white;
-  color: green;
+  color: rgb(2, 119, 11);
   border-radius: 150px;
-  border: 1px solid green;
+  border: 1px solid rgb(2, 119, 11);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 19px;
   padding: 8px 10px 5px 10px;
@@ -313,16 +286,16 @@ table .left {
 }
 
 .button-positive:hover {
-  background-color: green;
+  background-color: rgb(2, 119, 11);
   color: white;
 }
 
 .button-alert {
   width: 170px;
   background-color: white;
-  color: red;
+  color: rgb(221, 4, 4);
   border-radius: 150px;
-  border: 1px solid red;
+  border: 1px solid rgb(221, 4, 4);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 19px;
   padding: 8px 10px 5px 10px;
@@ -332,7 +305,7 @@ table .left {
 }
 
 .button-alert:hover {
-  background-color: red;
+  background-color: rgb(221, 4, 4);
   color: white;
 }
 
@@ -347,16 +320,29 @@ table .left {
 
 footer {
   width: 100%;
-  height: 100px;
-  background-color: rgb(19, 19, 19);
+  margin-top: 100px;
+  background-color: rgb(15, 15, 15);
   color: lightgrey;
+}
+
+footer .quick-links {
+  background-color: rgb(40, 40, 40);
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 13px;
+  padding: 10px 0px;
+}
+
+footer .quick-links a {
+  color: rgb(221, 221, 221);
+  text-decoration: none;
 }
 
 footer .contents {
   color: lightgray;
   font-size: 13px;
   margin: 5px;
-  padding: 5px;
+  padding: 10px 10px;
 }
 
 footer .copyright-notes {
