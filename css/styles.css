@@ -268,6 +268,7 @@ table {
   border-radius: 6px;
   font-family: "Source Sans Pro", sans-serif;
   -moz-border-radius: 6px;
+  text-transform: capitalize;
 }
 
 thead {
@@ -281,6 +282,7 @@ td {
   border-left: solid blueviolet 1px;
   overflow: hidden;
   border-top: solid blueviolet 1px;
+  text-transform: capitalize;
 }
 
 th {
@@ -291,6 +293,7 @@ th {
 }
 
 tr a {
+  text-transform: none;
   text-decoration: none;
   text-align: left;
   color: none;
@@ -303,6 +306,7 @@ tr a:hover {
 
 tr:hover {
   background-color: hsl(0, 0%, 89%);
+  text-transform: capitalize;
   border-radius: 6px;
 }
 
