@@ -49,19 +49,25 @@
     <span class="page-head">
       INBOX
     </span>
-    <span class="user-info">
-      <span class="info-text">
+    <span class="dropdown-user">
+      <button class="dropbtn"><span class="user-info">
+        <span class="info-text">
         <p>
           User <br />
-          Committee Member</p>
+          Committee Member
+        </p>
+        </span>
+        <span class="img-user">
+          <img class="user-image" src="../../assets/user.png" width="50" height="50">
+        </span>
       </span>
-      <span class="img-user">
-        <img class="user-image" src="../../assets/user.png" width="50" height="50">
-      </span>
-    </span>
+    </button>
+    <div class="dropdown-content-user">
+      <a href="#"> My Profile</a>
+      <a href="#"> Log out</a>
+    </div>
   </div>
 </head>
-
 <body>
   <div class="container">
     <form class="filters" action="">
@@ -87,19 +93,7 @@
               <option class="option" value="others">Others</option>
             </div>
           </select>
-          <span class="filter-cat">Key words:
-            <select class="categories-list">
-              <div class="options">
-                <option class="option" value="Food">All</option>
-                <option class="option" value="Food">Food</option>
-                <option class="option" value="Quality">Quality</option>
-                <option class="option" value="Staff">Staff</option>
-                <option class="option" value="Receipt">Receipt</option>
-                <option class="option" value="Uncategorized">Uncategorized</option>
-              </div>
-            </select>
-            <button class="button-small"><i class="material-icons-outlined md-18">arrow_forward_ios</i></button>
-          </span>
+        </span>
     </form>
 
     <table class="list-table js-sort-table">
@@ -121,9 +115,10 @@
           die("Connection failed: " . mysqli_connect_error());
         }
         
-        $sql = "SELECT * FROM test_1.test WHERE level = 'college' && status = 'Unread'";
+        $sql = "SELECT * FROM test_1.test WHERE level = 'college' ORDER BY date DESC";
         $result = mysqli_query($conn, $sql);
 
+        
         if (mysqli_num_rows($result) > 0) {
           // output data of each row
           $i=0;
@@ -131,7 +126,8 @@
                     
           echo "<tr class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
-          echo "<td> <a href=\"\">" . $row["subject"] . "</a></td>";
+          $id = $row["sno"];
+          echo "<td> <a href=\"../details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
           echo "<td>" . $row["status"] . "</td>";
@@ -143,7 +139,10 @@
         } else {
           echo "0 results";
         }    
-       ?>   
+        
+        mysqli_close($conn);   
+       ?>  
+       </span>
     </table>
   </div>
 

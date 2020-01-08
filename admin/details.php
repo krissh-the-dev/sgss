@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/style2.css" rel="stylesheet">
+  <link href="../css/styles2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
       <span class="logo">
-        <img class="header-image" src="assets/logo_p.png" alt="Government of Andhra Pradesh"></img>
+        <img class="header-image" src="../assets/logo_p.png" alt="Government of Andhra Pradesh"></img>
       </span>
       <span class="branding">
         <h1 class="header-text">
@@ -43,9 +43,26 @@
       </h2>
     </span>
   </header>
+  <?php 
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "test_1";
+
+        $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
+        if (!$conn) {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+        
+        $id = $_REQUEST["id"];
+        $sql = "SELECT * FROM test_1.test where sno = $id";
+        $result = mysqli_query($conn, $sql);
+        $report = mysqli_fetch_assoc($result);
+?>
   <div class="heading">
     <span class="complaint-sub">
-      Your subject goes here
+      <?php echo $report["subject"] ?>
     </span>
     <span class="user-info">
       <span class="info-text">
@@ -54,7 +71,7 @@
           Committee Member</p>
       </span>
       <span class="img-user">
-        <img class="user-image" src="assets/user.png" width="50" height="50">
+        <img class="user-image" src="../assets/user.png" width="50" height="50">
       </span>
     </span>
   </div>
@@ -64,32 +81,35 @@
   <div class="container">
     <div class="details">
       <table class="detail-table">
-        <th class="left"> College : </th>
-        <th>University College of Engineering, BIT Campus, Trichy</th>
         <tr>
-          <td class="left">Department : </td>
-          <td>Finance</td>
+          <td class="left"> Level : </td>
+          <td><?php echo $report["level"] ?></td>
         </tr>
         <tr>
-          <td class="left">Categories : </td class="left">
-          <td>Fees Receipt</td>
+          <td class="left"> University : </td>
+          <td><?php echo $report["university"] ?></td>
+        </tr>
+        <tr>
+          <td class="left"> College : </td>
+          <td><?php echo $report["college"] ?></td>
+        </tr>
+        <tr>
+          <td class="left">Category : </td class="left">
+          <td><?php echo $report["category"] ?></td>
         </tr>
       </table>
     </div>
     <div class="message">
       <textarea readonly class="message-box">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repudiandae debitis quia doloremque perferendis vel iste consequatur numquam, nam placeat ut assumenda officia quaerat, omnis, nobis excepturi quae provident nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat est nesciunt velit assumenda quibusdam ducimus architecto praesentium deleniti, quidem soluta quis quam dicta animi at. Eos aspernatur labore iure eum? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam nam facilis fuga voluptatum rerum sunt, tenetur illo perferendis, dolor odit, accusamus adipisci aperiam. Impedit esse quis voluptatibus ullam reiciendis adipisci!
+        <?php echo $report["description"];
+          mysqli_query($conn, "SET ");
+        ?>
       </textarea>
     </div>
     <div class="actions">
-      <button class="button">
+      <button class="button" title = "Print Complaint" alt="Print Screen" onclick="window.print();">
         <span class="button-icon"><i class="material-icons-outlined md-18">print</i></span>
-        <span class="button-text">Print</span>
-      </button>
-
-      <button class="button">
-        <span class="button-icon"><i class="material-icons-outlined md-18">check</i></span>
-        <span class="button-text">Mark as Read</span>
+        <span class="button-text">Print Report</span>
       </button>
 
       <button class="button-alert">
@@ -98,19 +118,15 @@
       </button>
 
       <div class="send">
-        <button class="button-positive">
-          <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
-          <span class="button-text">Send to HOD</span>
+        <button class="button-pending">
+          <span class="button-icon"><i class="material-icons-outlined md-18">notification_important</i></span>
+          <span class="button-text">Mark as Pending</span>
         </button>
 
         <button class="button-positive">
           <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
-          <span class="button-text">Send to Dean</span>
+          <span class="button-text">Send to Head</span>
         </button>
-
-        <button class="button-positive">
-          <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
-          <span class="button-text">Send to VC</span>
         </button>
       </div>
     </div>
