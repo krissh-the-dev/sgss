@@ -87,24 +87,25 @@
           </div>
         </select>
         <span class="filter-dept">Categories:
-          <select class="categories-list">
+          <script src="../js/filter.js"></script>
+          <select id = "selection" class="categories-list">
             <div class="options">
-              <option class="option" value="all" selected>All</option>
-              <option class="option" value="admission">Admission</option>
-              <option class="option" value="exams">Exams</option>
-              <option class="option" value="finance">Finance</option>
-              <option class="option" value="finance">Lecture</option>
-              <option class="option" value="finance">Revaluation</option>
-              <option class="option" value="ragging">Ragging</option>
-              <option class="option" value="others">Others</option>
+              <option class="option" value="All">All</option>
+              <option class="option" value="Admission">Admission</option>
+              <option class="option" value="Exams">Exams</option>
+              <option class="option" value="Finance">Finance</option>
+              <option class="option" value="Lecture">Lecture</option>
+              <option class="option" value="Revaluation">Revaluation</option>
+              <option class="option" value="Ragging">Ragging</option>
+              <option class="option" value="Other">Other</option>
             </div>
           </select>
         </span>
     </form>
 
-    <table class="list-table js-sort-table">
-      <thead>
-        <tr>
+    <table id="listTable" class="list-table js-sort-table">
+      <!-- <thead> -->
+        <tr id ="HeadRow">
         <th style="width:8%">Date</th>
         <th style="width:60%;">Subject</th>
         <th>Level</th>
@@ -112,7 +113,7 @@
         <th>Key words</th>
         <th>Status</th>
       </tr>
-      </thead>
+      <!-- </thead> -->
       <?php 
 
         $servername = "localhost";
@@ -133,7 +134,7 @@
           // output data of each row
           while($row = mysqli_fetch_assoc($result)) {
                     
-          echo "<tr class=\"table-data\">";
+          echo "<tr category =\"" . $row["category"] . "\" class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
           $id = $row["id"];
           echo "<td> <a href=\"details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
@@ -144,9 +145,9 @@
           echo "</tr>";
           $i++;
           }
-          echo "" . $i . " results";   
+          // echo "" . $i . " results";   
         } else {
-          echo "0 results";
+          // echo "0 results";
         } 
         
         mysqli_close($conn);   
