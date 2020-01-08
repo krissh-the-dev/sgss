@@ -126,11 +126,11 @@
                     
           echo "<tr class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
-          $id = $row["sno"];
+          $id = $row["id"];
           echo "<td> <a href=\"../details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
-          echo "<td>" . $row["status"] . "</td>";
+          echo "<td>" . $row["sts"] . "</td>";
           echo "</tr>";
           $i++;
           }

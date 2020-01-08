@@ -15,7 +15,9 @@
   
 <?php
 $id = $_REQUEST["id"];
-echo $var_value;
+$cmd = $_REQUEST["cmd"];
+echo $id;
+echo $cmd;
 
 ?>
 </body>

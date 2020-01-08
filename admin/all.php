@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
   <link href="../css/styles.css" rel="stylesheet">
   <script src="../js/sort-table.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="sort-table.css">
   <title>Complaints</title>
   <header class="top-bar">
@@ -88,7 +89,7 @@
         <span class="filter-dept">Categories:
           <select class="categories-list">
             <div class="options">
-              <option class="option" value="admission">All</option>
+              <option class="option" value="all" selected>All</option>
               <option class="option" value="admission">Admission</option>
               <option class="option" value="exams">Exams</option>
               <option class="option" value="finance">Finance</option>
@@ -134,12 +135,12 @@
                     
           echo "<tr class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
-          $id = $row["sno"];
+          $id = $row["id"];
           echo "<td> <a href=\"details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["level"] . "</td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
-          echo "<td>" . $row["status"] . "</td>";
+          echo "<td>" . $row["sts"] . "</td>";
           echo "</tr>";
           $i++;
           }

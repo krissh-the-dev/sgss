@@ -118,7 +118,7 @@
         $sql = "SELECT * FROM test_1.test WHERE level = 'college' ORDER BY date DESC";
         $result = mysqli_query($conn, $sql);
 
-        
+
         if (mysqli_num_rows($result) > 0) {
           // output data of each row
           $i=0;
@@ -126,11 +126,11 @@
                     
           echo "<tr class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
-          $id = $row["sno"];
+          $id = $row["id"];
           echo "<td> <a href=\"../details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
-          echo "<td>" . $row["status"] . "</td>";
+          echo "<td>" . $row["sts"] . "</td>";
           echo "</tr>";
         
           $i++;
