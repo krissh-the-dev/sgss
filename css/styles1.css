@@ -187,208 +187,142 @@ body {
 .container {
   width: 80%;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
-::placeholder {
-  color: lightgray;
-  opacity: 1;
+.filters {
+  margin-bottom: 15px;
 }
 
-:-ms-input-placeholder {
-  color: lightgray;
+.filters .filter-cat,
+.filter-dept,
+.filter-level {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
 }
 
-::-ms-input-placeholder {
-  color: lightgray;
+.filter-dept,
+.filter-cat {
+  margin: 0px 50px;
+}
+
+.categories-list {
+  background-color: blueviolet;
+  border-radius: 150px;
+  width: 160px;
+  color: white;
+  border-color: white;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  padding: 3px 5px;
+}
+
+.options {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.option {
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.option:hover {
+  background-color: blueviolet;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.button-small {
+  display: inline-block;
+  border-radius: 150px;
+  background-color: blueviolet;
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  border-color: white;
+  padding: 3px 5px;
+  font-size: 18px;
+}
+
+.list-table {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 15px;
+  border-color: blueviolet;
+}
+
+.list-table td {
+  align-items: center;
+  text-align: center;
+}
+
+.num-res {
+  float: right;
+  margin-left: 100px;
 }
 
 table {
   border-collapse: separate;
+  border: solid blueviolet 1px;
+  overflow: hidden;
+  border-radius: 6px;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 16px;
+  -moz-border-radius: 6px;
+  text-transform: capitalize;
 }
 
-table .left {
+thead {
+  padding: -1px;
+  border-top-left-radius: 15px;
+  background-color: blueviolet;
+  color: white;
+}
+
+td {
+  border-left: solid blueviolet 1px;
+  overflow: hidden;
+  border-top: solid blueviolet 1px;
+  text-transform: capitalize;
+}
+
+th {
+  background-color: blueviolet;
+  overflow: hidden;
+  border-top: none;
+  padding: 10px 3px;
+}
+
+tr a {
+  text-transform: none;
+  text-decoration: none;
+  text-align: left;
+  color: none;
+}
+
+tr a:hover {
+  color: black;
   font-weight: 600;
-  text-align: right;
 }
 
-.key {
-  border-radius: 100px;
-  padding: 0px 5px;
-  border: 1px solid rgb(0, 110, 255);
+tr:hover {
+  background-color: hsl(0, 0%, 89%);
+  text-transform: capitalize;
+  border-radius: 6px;
 }
 
-.complaint-sub {
-  margin-top: 15px;
-  padding: 5px 10px;
-  text-align: justify;
-  border-radius: 150px;
-  background-color: blueviolet;
-  font-family: "Source Sans Pro";
-  font-size: 20px;
-  color: white;
-  float: left;
-}
-
-.message {
-  margin-top: 25px;
-}
-
-.message-box {
-  border-radius: 10px;
-  text-align: justify;
-  border: 1px solid blueviolet;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 15px;
-  /* color: rgb(155, 155, 155); */
-  /* background-color: transparent; */
-  min-width: 100%;
-  max-width: 100%;
-  width: 100%;
-  min-height: 150px;
-  max-height: 500px;
-  height: 110px;
-  padding: 5px;
-}
-
-.actions {
-  width: 75%;
-  margin: auto;
-}
-
-.button {
-  width: 200px;
-  background-color: transparent;
-  color: blueviolet;
-  border-radius: 150px;
-  border: 1px solid blueviolet;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button:hover {
-  background-color: blueviolet;
-  color: white;
-}
-
-.button-send {
-  width: 200px;
-  background-color: transparent;
-  color: rgb(15, 15, 15);
-  border-radius: 150px;
-  border: 1px solid rgb(30, 30, 30);
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button-send:hover {
-  background-color: rgb(15, 15, 15);
-  color: white;
-}
-
-.button-alert {
-  width: 200px;
-  background-color: transparent;
-  color: rgb(221, 4, 4);
-  border-radius: 150px;
-  border: 1px solid rgb(221, 4, 4);
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button-alert:hover {
-  background-color: rgb(221, 4, 4);
-  color: white;
-}
-
-.button-pending {
-  width: 200px;
-  background-color: transparent;
-  color: orangered;
-  border-radius: 150px;
-  border: 1px solid orangered;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button-pending:hover {
-  background-color: orangered;
-  color: white;
-}
-
-.button-done {
-  width: 200px;
-  background-color: transparent;
-  color: rgb(0, 110, 255);
-  border-radius: 150px;
-  border: 1px solid rgb(0, 110, 255);
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button-done:hover {
-  background-color: rgb(0, 110, 255);
-  color: white;
-}
-
-.button-reply {
-  width: 200px;
-  background-color: transparent;
-  color: rgb(0, 170, 71);
-  border-radius: 150px;
-  border: 1px solid rgb(0, 170, 71);
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  padding: 8px 10px 5px 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
-}
-
-.button-reply:hover {
-  background-color: rgb(0, 170, 71);
-  color: white;
-}
-
-.button-reply .button-icon {
-  margin-top: 3px;
-}
-
-.button-icon {
-  float: left;
-  margin-right: 5px;
-}
-
-.button-text {
-  float: inline;
+td:first-child,
+th:first-child {
+  border-left: none;
 }
 
 footer {
   width: 100%;
-  margin-top: 200px;
+  margin-top: 100px;
   background-color: rgb(15, 15, 15);
   color: lightgrey;
 }
@@ -420,15 +354,6 @@ footer .copyright-notes {
   padding: 15px 0px;
   background-color: black;
 }
-
-.button-left {
-  float: left;
-}
-
-.button-right {
-  float: right;
-}
-
 /* USer panel */
 
 .dropdown-user {

@@ -54,11 +54,15 @@
         if (!$conn) {
           die("Connection failed: " . mysqli_connect_error());
         }
+
         
         $id = $_REQUEST["id"];
         $sql = "SELECT * FROM test_1.test where id = $id";
         $result = mysqli_query($conn, $sql);
         $report = mysqli_fetch_assoc($result);
+        
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($res);
 ?>
   <div class="heading">
     <span class="complaint-sub">
@@ -105,6 +109,20 @@
           <td class="left">Category : </td class="left">
           <td><?php echo $report["category"] ?></td>
         </tr>
+        <tr>
+          <td class="left">Current Status : </td class="left">
+          <td><?php echo $report["sts"] ?></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td class="left">Keywords : </td class="left">
+          <td><span class = "key"><?php echo $report["keyword"] ?></span></td>
+        </tr>
       </table>
     </div>
     <div class="message">
@@ -112,6 +130,13 @@
         <?php 
           echo $report["description"];
           mysqli_query($conn, "UPDATE test_1.test SET sts = 'Read' WHERE id = $id && sts = 'Unread'");
+          
+          $to_email = $row["email"];
+          $headers = 'From: noreply@sgss.com';
+          $subject = 'Your complaint was validated.';
+          $message = 'Hi,' . $to_email . ', your complaint about ' . $row["subject"] . "was recieved and read by a committee member. Actions to resolve your issue will be taken shortly. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
+          
+          mail($to_email,$subject,$message,$headers);
         ?>
       </textarea>
     </div>

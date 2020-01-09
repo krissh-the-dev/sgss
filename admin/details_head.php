@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+  
+
+?>
 <html lang="en">
 
 <head>
@@ -7,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles2.css" rel="stylesheet">
+  <link href="../css/style2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -59,6 +63,8 @@
         $sql = "SELECT * FROM test_1.test where id = $id";
         $result = mysqli_query($conn, $sql);
         $report = mysqli_fetch_assoc($result);
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($res);
 ?>
   <div class="heading">
     <span class="complaint-sub">
@@ -105,18 +111,37 @@
           <td class="left">Category : </td class="left">
           <td><?php echo $report["category"] ?></td>
         </tr>
+        <tr>
+          <td class="left">Current Status : </td class="left">
+          <td><?php echo $report["hsts"] ?></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td class="left">Keywords : </td class="left">
+          <td><span class = "key"><?php echo $report["keyword"] ?></span></td>
+        </tr>
       </table>
     </div>
     <div class="message">
       <textarea readonly class="message-box">
         <?php 
           echo $report["description"];
-          mysqli_query($conn, "UPDATE test_1.test SET sts = 'Read' WHERE id = $id && sts = 'Unread'");
+          mysqli_query($conn, "UPDATE test_1.test SET hsts = 'Read' WHERE id = $id && hsts = 'Unread'");
+          $to_email = $row["email"];
+          $headers = 'From: noreply@sgss.com';
+          $subject = 'Your complaint was validated.';
+          $message = 'Hi, ' . $to_email . ' , your complaint about ' . $row["subject"] . " was recieved and read by an higher official of the Students\' Grievance Support Team. Actions to resolve your issue will be taken shortly. Thank you for reporting us. \nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
+          
+          mail($to_email,$subject,$message,$headers);
         ?>
       </textarea>
     </div>
     <div class="actions">
-      <form type = "POST">
       <span class ="button-left">
       <button class="button" alt="Print Screen" onclick="window.print();">
         <span class="button-icon"><i class="material-icons-outlined md-18">print</i></span>
@@ -124,34 +149,28 @@
       </button>
       </span>
 
-      <span class="button-right">
-      <button type = "submit" class="button-alert" onclick="<?php $cmd = "UPDATE test_1.test SET sts = 'Spam' WHERE id = $id";?>">
-        <span class="button-icon"><i class="material-icons-outlined md-18">error_outline</i></span>
-        <span class="button-text">Mark as Spam</span>
-      </button>
-      </span>
-
-      <div class="send">
-
-      <span class ="button-left">
-        <button type = "submit" class="button-pending" onclick="<?php $cmd = "UPDATE test_1.test SET sts = 'Pending' WHERE id = $id";?>">
+      <span class ="button-right">
+        <?php echo "<button onclick=window.location.replace(\"update_head.php?id=". $id ."&cmd=Pending\"); class=\"button-pending\">" ?>
           <span class="button-icon"><i class="material-icons-outlined md-18">notification_important</i></span>
           <span class="button-text">Mark as Pending</span>
         </button>
       </span>
 
+      <div class="send">
+
+      <span class ="button-left">
+        <?php echo "<button onclick=window.location.replace(\"update_head.php?id=". $id ."&cmd=Completed\"); class=\"button-done\">" ?>
+          <span class="button-icon"><i class="material-icons-outlined md-18">check</i></span>
+          <span class="button-text">Action Taken</span>
+        </button>
+      </span>
+
       <span class="button-right">
-        <button type = "submit" class="button-positive" onclick="<?php $cmd = "UPDATE test_1.test SET sts = 'Sent' WHERE id = $id";?>">
-          <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
-          <span class="button-text">Send to Head</span>
+        <?php echo "<button onclick=window.location.replace(\"reply.php?id=". $id ."\"); class=\"button-reply\">" ?>
+          <span class="button-icon"><i class="material-icons-outlined md-18">message</i></span>
+          <span class="button-text">Reply</span>
         </button>
       </span> 
-      </form>
-      <?php 
-      if (isset($_POST["submit"])) {
-        mysqli_query($conn, $cmd);
-      }
-      ?>
       </div>
     </div>
   </div>

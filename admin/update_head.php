@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="Refresh" content="2; filters.php?level=All&category=All&status=All" />
+  <meta http-equiv="Refresh" content="2; filters_head.php?level=All&category=All&status=All" />
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
   <title>Update</title>
@@ -27,16 +27,16 @@
         
         $id = $_REQUEST["id"];
         $cms = $_REQUEST["cmd"];
-        // $email = $_GET["mail"];
 
         $sql = "SELECT * FROM test_1.test where id = $id";
 
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($res);
 
-        $cmd = "UPDATE test_1.test SET sts = '$cms' WHERE id = $id";
+        $cmd = "UPDATE test_1.test SET hsts = '$cms' WHERE id = $id";
         $result = mysqli_query($conn, $cmd);
 
+        
         if (strcmp($cms, "Sent") == 0) {
           $cmd = "UPDATE test_1.test SET hsts = 'Unread' WHERE id = $id";
           $result = mysqli_query($conn, $cmd);  
@@ -46,22 +46,12 @@
         switch ($cms) {
           case "Pending":
             $subject = 'Your complaint was validated.';
-            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and was put in pending list by our committee member. You\'ll be updated when your case was taken into account again. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
-          break;
-
-          case "Spam":
-            $subject = 'Your complaint was validated.';
-            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and was found to be inappropriate by our committee member. We request you to submit a well defined report again. Please do not spam such a dedicated community. We work hard to resolve students\' issues. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
-          break;
-
-          case "Sent":
-            $subject = 'Your complaint was validated.';
-            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and was sent to a higher official for further action, by a committee member. Actions to resolve your issue will be taken shortly. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
+            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and was put in pending list by an higher official of Students' Grievance Support System. You\'ll be updated when your case was taken into account again. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
           break;
 
           case "Completed":
             $subject = 'Your complaint was validated.';
-            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and a curresponding action to resolve the issue was made by a committee member. We hope your issue was resolved. We really appriciate that you stepped forward to report the issue. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
+            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and a curresponding action to resolve the issue was made by an higher official of Students' Grievance Support System. We hope your issue was resolved. We really appriciate that you stepped forward to report the issue. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
           break;
           default:
             $subject = 'Testing PHP Mail';

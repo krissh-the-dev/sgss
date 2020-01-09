@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
-        session_start();
+session_start();        
+// $userid = $_GET["userid"];
+$userid = "user1";
+$category = $_REQUEST["category"];
+$level = $_REQUEST["level"];
+$status = $_REQUEST["status"];
 ?>
 
 <html lang="en">
@@ -11,10 +16,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/styles1.css" rel="stylesheet">
   <script src="../js/sort-table.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="sort-table.css">
   <title>Complaints</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -59,7 +63,7 @@
         <span class="info-text">
         <p>
           User <br />
-          Committee Member
+          Head
         </p>
         </span>
         <span class="img-user">
@@ -76,11 +80,9 @@
 
 <body>
   <div class="container">
-    <form class="filters" action="">
+    <div class="filters">
       <span class="filter-level">Level:
-        <script id = "LF" src="../js/filter2.js"></script>
-        <!-- <select class="categories-list" onchange = "window.location.replace(this.options[this.selectedIndex].value + '/all.php');"> -->
-        <select  id = "selection2" class="categories-list">
+        <select  id = "LF" class="categories-list">
           <div class="options">
             <option class="option" value="All">All</option>
             <option class="option" value="University">University</option>
@@ -89,7 +91,6 @@
           </div>
         </select>
         <span class="filter-dept">Categories:
-          <script src="../js/filter2.js"></script>
           <select id = "CF" class="categories-list">
             <div class="options">
               <option class="option" value="All">All</option>
@@ -103,19 +104,44 @@
             </div>
           </select>
         </span>
-    </form>
+      </span>
+        <span class="filter-dept">Status:
+          <select id = "SF" class="categories-list">
+            <div class="options">
+              <option class="option" value="All">All</option>
+              <option class="option" value="Unread">Unread</option>
+              <option class="option" value="Read">Read</option>
+              <option class="option" value="Completed">Completed</option>
+              <option class="option" value="Responded">Responded</option>
+            </div>
+          </select>
+        </span>
+        
+        <span class = "go-button">
+          <button class="button-small" onclick="
+              var  a = document.getElementById('LF');
+              var level = a.options[a.selectedIndex].value;
+              console.log(level);
+              
+              var  b = document.getElementById('CF');
+              var category = b.options[b.selectedIndex].value;
+              console.log(category);
+
+              var  c = document.getElementById('SF');
+              var status = c.options[c.selectedIndex].value;
+              // console.log(status);
+
+              var link = 'filters_head.php?level=' + level + '&category=' + category + '&status=' + status;
+              console.log(link);
+              window.location.replace(link);
+              ">
+            <i class="material-icons-outlined md-18">arrow_forward_ios</i>
+          </button>
+        </span>
+      </div>
 
     <table id="listTable" class="list-table js-sort-table">
-      <!-- <thead> -->
-        <tr id ="HeadRow">
-        <th style="width:8%">Date</th>
-        <th style="width:60%;">Subject</th>
-        <th>Level</th>
-        <th>Category</th>
-        <th>Key words</th>
-        <th>Status</th>
-      </tr>
-      <!-- </thead> -->
+      
       <?php 
 
         $servername = "localhost";
@@ -128,29 +154,71 @@
           die("Connection failed: " . mysqli_connect_error());
         }
         
-        $sql = "SELECT * FROM test_1.test ORDER BY date DESC";
+        if (strcmp($level, "All") == 0) {
+          if (strcmp($category, "All") == 0) {
+            if (strcmp($status, "All") == 0){
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' ORDER BY date DESC";
+            } else {
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && hsts=\"" . $status . "\" ORDER BY date DESC";
+            }
+          }
+          else {
+            if (strcmp($status, "All") == 0){
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && category=\"" . $category . "\" ORDER BY date DESC";
+            } else {
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && hsts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+            }
+          }
+        } else {
+          if (strcmp($category, "All") == 0) {
+            if (strcmp($status, "All") == 0) {
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && level=\"" . $level . "\" ORDER BY date DESC";
+            } else {
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && level=\"" . $level . "\" && hsts=\"" . $status . "\" ORDER BY date DESC";
+            }
+          } else {
+            if (strcmp($status, "All") == 0) { 
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+            } else {
+              $sql = "SELECT * FROM test_1.test WHERE sts = 'Sent' && level=\"" . $level . "\" && category=\"" . $category . "\" && hsts=\"" . $status . "\" ORDER BY date DESC";
+            }
+          }
+        }
+
+
         $result = mysqli_query($conn, $sql);
 
+        $i=0;
         if (mysqli_num_rows($result) > 0) {
-          $i=0;
-          // output data of each row
+          ?>
+          <tr id ="HeadRow">
+            <th style="width:8%">Date</th>
+            <th style="width:60%;">Subject</th>
+            <th>Level</th>
+            <th>Category</th>
+            <th>Key words</th>
+            <th>Status</th>
+          </tr>
+        <?php
           while($row = mysqli_fetch_assoc($result)) {
                     
           echo "<tr category =\"" . $row["category"] . "\" level =\"" . $row["level"] . "\" class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
           $id = $row["id"];
-          echo "<td> <a href=\"details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
+          echo "<td> <a href=\"details_head.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["level"] . "</td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
-          echo "<td>" . $row["sts"] . "</td>";
+          echo "<td>" . $row["hsts"] . "</td>";
           echo "</tr>";
           $i++;
-          }
-          // echo "" . $i . " results";   
+          }  
         } else {
-          // echo "0 results";
+          $i=0;
         } 
+
+        $result = mysqli_query($conn, "SELECT * FROM test_1.test");
+        echo "Showing " . $i .  " result(s) out of  total " . mysqli_num_rows($result) . " records.";
         
         mysqli_close($conn);   
        ?>   
@@ -188,9 +256,12 @@
     </span c>
   </div>
 </footer>
+
 <script>
   jQuery(document).ready(function(){
-   document.getElementById("YourSelectComponentID").value = <?php $level ?>;
+   document.getElementById("LF").value = <?php echo "\"" . $level . "\"" ?>;
+   document.getElementById("CF").value = <?php echo "\"" . $category . "\"" ?>;
+   document.getElementById("SF").value = <?php echo "\"" . $status . "\"" ?>;
 });
 </script>
 </html>

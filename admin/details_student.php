@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles2.css" rel="stylesheet">
+  <link href="../css/style2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -69,7 +69,7 @@
         <span class="info-text">
         <p>
           User <br />
-          Committee Member
+          Student
         </p>
         </span>
         <span class="img-user">
@@ -105,6 +105,20 @@
           <td class="left">Category : </td class="left">
           <td><?php echo $report["category"] ?></td>
         </tr>
+        <tr>
+          <td class="left">Current Status : </td class="left">
+          <td><?php echo $report["sts"] ?></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td class="left">Keywords : </td class="left">
+          <td><span class = "key"><?php echo $report["keyword"] ?></span></td>
+        </tr>
       </table>
     </div>
     <div class="message">
@@ -116,46 +130,19 @@
       </textarea>
     </div>
     <div class="actions">
-      <form action="" method="POST">
       <span class ="button-left">
       <button class="button" alt="Print Screen" onclick="window.print();">
         <span class="button-icon"><i class="material-icons-outlined md-18">print</i></span>
         <span class="button-text">Print Report</span>
       </button>
       </span>
-      </form>
 
-      <form action="" method="POST">
       <span class="button-right">
-        <?php $cmd1= "UPDATE test_1.test SET sts = 'Spam' WHERE id = $id";?>
-      <button type = "spam" class="button-alert" onclick="<?php mysqli_query($conn, $cmd1); ?>">
-        <span class="button-icon"><i class="material-icons-outlined md-18">error_outline</i></span>
-        <span class="button-text">Mark as Spam</span>
+      <?php echo "<button onclick=window.location.replace(\"update_student.php?id=". $id . "&cmd=Withdrawn\"); class=\"button-alert\">" ?>
+        <span class="button-icon"><i class="material-icons-outlined md-18">cancel</i></span>
+        <span class="button-text">Withdraw</span>
       </button>
       </span>
-      </form>
-
-      <div class="send">
-
-      <form action="" method="POST">
-      <span class ="button-left">
-        <?php $cmd2= "UPDATE test_1.test SET sts = 'Pending' WHERE id = $id";?>
-        <button type = "pending" class="button-pending" onclick="<?php mysqli_query($conn, $cmd2); ?>">
-          <span class="button-icon"><i class="material-icons-outlined md-18">notification_important</i></span>
-          <span class="button-text">Mark as Pending</span>
-        </button>
-      </span>
-      </form>
-
-      <form action="" method="POST">
-      <span class="button-right">
-        <?php $cmd3= "UPDATE test_1.test SET sts = 'Sent' WHERE id = $id";?>
-        <button type = "send" class="button-positive" onclick="<?php mysqli_query($conn, $cmd3); ?>">
-          <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
-          <span class="button-text">Send to Head</span>
-        </button>
-      </span> 
-      </form>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 session_start();        
+// $userid = $_GET["userid"];
+$userid = "user1";
 $category = $_REQUEST["category"];
 $level = $_REQUEST["level"];
 $status = $_REQUEST["status"];
@@ -61,7 +63,7 @@ $status = $_REQUEST["status"];
         <span class="info-text">
         <p>
           User <br />
-          Committee Member
+          Student
         </p>
         </span>
         <span class="img-user">
@@ -112,6 +114,7 @@ $status = $_REQUEST["status"];
               <option class="option" value="Completed">Completed</option>
               <option class="option" value="Sent">Sent</option>
               <option class="option" value="Responded">Responded</option>
+              <option class="option" value="Withdrawn">Withdrawn</option>
             </div>
           </select>
         </span>
@@ -130,7 +133,7 @@ $status = $_REQUEST["status"];
               var status = c.options[c.selectedIndex].value;
               console.log(status);
 
-              var link = 'filters.php?level=' + level + '&category=' + category + '&status=' + status;
+              var link = 'filters_student.php?level=' + level + '&category=' + category + '&status=' + status;
               console.log(link);
               window.location.replace(link);
               ">
@@ -156,30 +159,30 @@ $status = $_REQUEST["status"];
         if (strcmp($level, "All") == 0) {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
           else {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test WHERE category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             }
           }
         } else {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0) {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           } else {
             if (strcmp($status, "All") == 0) { 
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
         }
@@ -203,7 +206,7 @@ $status = $_REQUEST["status"];
           echo "<tr category =\"" . $row["category"] . "\" level =\"" . $row["level"] . "\" class=\"table-data\">";
           echo "<td>" . $row["date"] . "</td>";
           $id = $row["id"];
-          echo "<td> <a href=\"details.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
+          echo "<td> <a href=\"details_student.php?id=". $id ."\">" . $row["subject"] . "</a></td>";
           echo "<td>" . $row["level"] . "</td>";
           echo "<td>" . $row["category"] . "</td>";
           echo "<td>" . $row["keyword"] . "</td>";
