@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles2.css" rel="stylesheet">
+  <link href="../css/style2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -140,9 +140,26 @@
       </span>
 
       <span class="button-right">
-        <?php echo "<button onclick=window.location.replace(\"update.php?id=". $id ."&cmd=Sent\"); class=\"button-positive\">" ?>
+        <?php echo "<button onclick=window.location.replace(\"update.php?id=". $id ."&cmd=Sent\"); class=\"button-send\">" ?>
           <span class="button-icon"><i class="material-icons-outlined md-18">send</i></span>
           <span class="button-text">Send to Head</span>
+        </button>
+      </span> 
+      </div>
+
+      <div class="send">
+
+      <span class ="button-left">
+        <?php echo "<button onclick=window.location.replace(\"update.php?id=". $id ."&cmd=Completed\"); class=\"button-done\">" ?>
+          <span class="button-icon"><i class="material-icons-outlined md-18">check</i></span>
+          <span class="button-text">Action Taken</span>
+        </button>
+      </span>
+
+      <span class="button-right">
+        <?php echo "<button onclick=window.location.replace(\"reply.php?id=". $id ."\"); class=\"button-reply\">" ?>
+          <span class="button-icon"><i class="material-icons-outlined md-18">message</i></span>
+          <span class="button-text">Reply</span>
         </button>
       </span> 
       </div>
