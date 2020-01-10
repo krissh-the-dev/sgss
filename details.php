@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-
-<?php 
-
-session_start();
-$_SESSION["logged_in"] = true;       
-$userid = $_SESSION["userid"];
-$name = $_SESSION["name"];
-$usr = $_SESSION["usr"];
-
-?>
-
 <html lang="en">
 
 <head>
@@ -20,7 +9,7 @@ $usr = $_SESSION["usr"];
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
   <link href="css/styles1.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>New Complaint | SGSS</title>
+  <title>Sign up | SGSS</title>
   <header class="top-bar">
     <span class="logo">
       <img class="header-image" src="assets/logo_p.png" alt="Government of Andra Pradesh"></img>
@@ -44,81 +33,45 @@ $usr = $_SESSION["usr"];
             </div>
           </span>
           <a class="nav-links" href="help.php"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
   </header>
   <div class="heading">
     <span class="page-head">
-      New Complaint
+      Sign up
     </span>
-    <span class="dropdown-user">
-      <button class="dropbtn">
-        <span class="user-info">
-          <span class="info-text">
-            <p>
-          <?php echo $name; ?> <br />
-          <?php echo $usr; ?>
-        </p>
-          </span>
-          <span class="img-user">
-            <img class="user-image" src="assets/user.png" width="50" height="50">
-          </span>
-        </span>
-      </button>
-      <div class="dropdown-content-user">
-        <a href="#"> My Profile</a>
-        <a href="logout.php"> Log out</a>
-      </div>
   </div>
 </head>
 
 <body>
   <div class="container-special">
-    <form action="submit.php" onsubmit="return chdsc(this);" name="compForm" method="POST">
+    <form action="register.php" onsubmit="return checkPass(this);" method="POST">
 
-      Level: <br>
-      <select class="categories-list" name="level" required>
-        <option class="" value="University">University</option>
-        <option class="" value="College">College</option>
-        <option class="" value="Department">Department</option>
+      Name:<br> <input type="text" class="text-box" name="name" value="" readonly></input><br />
+      Age:<br> <input type="number" class="num-box" name="age" value="" readonly></input><br />
+      Gender:<br>
+      <select class="categories-list" name="sex" readonly>
+        <option class="" value="Male">Male</option>
+        <option class="" value="Female">Female</option>
+        <option class="" value="Other">Other</option>
       </select>
-      <br>
-      <br>
-
-      Category: <br>
-      <select class="categories-list" name="category" required>
-        <option class="option" value="Admission">Admission</option>
-        <option class="option" value="Exams">Exams</option>
-        <option class="option" value="Finance">Finance</option>
-        <option class="option" value="Lecture">Lecture</option>
-        <option class="option" value="Ragging">Ragging</option>
-        <option class="option" value="Other">Other</option>
-      </select>
-      <br><br>
-
-      Subject:<br>
-      <input type="text" class="text-box" name="subject" placeholder="Type your subject here..." required></input>
       <br />
-
-      Description: <br>
-      <textarea class="description" name="description" placeholder="Your description goes here..." required></textarea>
-
-      <br>
-
-      <button class="button-gen" type="submit">
-        <span class=" button-icon"><i class=" material-icons-outlined md-18">done</i></span>
-        <span class="button-text">Submit</span>
-      </button>
-
+      University:<br> <input type="text" class="text-box" name="univ" value="" readonly></input><br />
+      College:<br> <input type="text" class="text-box" name="clg" value="" readonly></input><br />
+      Department:<br> <input type="text" class="text-box" name="dept" value="" readonly></input><br />
+      E-Mail:<br> <input type="email" class="text-box" name="mail" value="" readonly></input><br />
+      Mobile:<br> <input type="tel" class="text-pass" name="mob" value="" readonly></input><br />
+      Password:<br> <input id="orp" type="password" class="text-pass" value="" name="pwd" readonly></input><br>
+      Re-enter password:<br> <input id="dup" type="password" class="text-pass" value="" name="cpwd" readonly></input><br>
     </form>
   </div>
 </body>
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="home.html">Home</a> |
+      <a href="../home.html">Home</a> |
       <a href="Contact.html">Contact</a> |
       <a href="Feedback.html">Feedback</a> |
       <a href="privacy.html">Privacy</a>
@@ -137,16 +90,26 @@ A committee member will read the Students Complaints and they validate the compl
     </span c>
   </div>
 </footer>
+
 <script>
-  function chdsc(compForm) {
-    // console.log(compForm.description.value);
-    // console.log(compForm.description.value.length);
-    if (compForm.description.value.length >= 25) {
+  function checkPass(signUpForm) {
+    if (signUpForm.pwd.value == signUpForm.cpwd.value) {
+    } else {
+      alert("Password and confirm passwords are different.");
+      return false;
+    }
+    if ((signUpForm.pwd.value).length >= 6) {
+    } else {
+      alert("Password should contain atleast six characters.");
+      return false;
+    }
+    if (signUpForm.age.value >= 15) {
       return true;
     } else {
-      alert("Please provide a detailed description. (Minimum 25 letters)");
+      alert("Go away kid!");
       return false;
     }
   }
 </script>
+
 </html>

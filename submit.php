@@ -41,8 +41,28 @@ $usr = $_SESSION["usr"];
     $category= $_POST["category"];
     $university= $row["university"];
     $college= $row["college"];
-    $keyword= 'sample';
+    $keyword= 'Unspecified';
     $sts= 'Unread';
+
+    $food=array('food', 'salt', 'spoilt', 'bitter', 'sour', 'hygene');
+    $infrastructure=array('infrastructure', 'class', 'room', 'board', 'labs', 'playground', 'court', 'building');
+    $facilities=array('facilities', 'bathroom', 'toilet', 'mess', 'canteen', 'lab', 'library', 'transport', 'water');
+    $environment=array('environment', 'tree', 'pollut', 'plant', 'thorn');
+    $maintenance=array('maintenance', 'neat', 'lock', 'broom', 'wash', 'clean', 'dirty');
+    $staff = array('staff', 'punctual', 'attentive', 'misbehave', 'knowledge', 'late');
+    $drugs = array('drugs', 'alcohol', 'weed', 'tobacco', 'smoke');
+    $money = array('commerce', 'money', 'fees', 'currupt', 'cash');
+
+    $keyarrays= array($food, $infrastructure, $facilities, $environment, $maintenance, $drugs, $staff, $money);
+
+    foreach ($keyarrays as $ar) {
+      foreach ($ar as $key){
+        if (strpos($description, $key) !== false) {
+          $keyword = $ar[0];
+        }
+      }
+    }
+      
     
     $sql = "INSERT INTO sgss.complaints(userid, email, subject,	description, level,	category,	university,	college, keyword,	sts) VALUES ('$userid', '$userid', '$subject', '$description', '$level', '$category', '$university', '$college', '$keyword', '$sts')";
 

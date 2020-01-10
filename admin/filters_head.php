@@ -50,8 +50,8 @@ $status = $_REQUEST["status"];
               <a href="#">More</a>
             </div>
           </span>
-          <a class="nav-links" href="home.html"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">help_outline</i></a>
+          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
@@ -233,7 +233,7 @@ $status = $_REQUEST["status"];
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="home.php">Home</a> |
+      <a href="../home.html">Home</a> |
       <a href="Contact.html">Contact</a> |
       <a href="Feedback.html">Feedback</a> |
       <a href="privacy.html">Privacy</a>
@@ -241,16 +241,9 @@ $status = $_REQUEST["status"];
   </div>
   <div class="contents">
     <p class="footer-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ipsa sapiente, placeat minima ducimus minus
-      dolore quo, voluptas exercitationem neque quisquam omnis commodi magnam nobis incidunt cum veniam. Velit,
-      eveniet!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem vel, laudantium, corrupti temporibus
-      dolorem optio blanditiis minus impedit praesentium modi unde numquam ipsa asperiores cupiditate veritatis
-      dolores
-      sed fugit recusandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. A dignissimos facere minus,
-      nesciunt magnam libero sapiente ad animi hic autem in voluptatibus nam? A quia aperiam voluptas, neque
-      accusantium
-      ea!
+      The Student Grievance Support System (SGSS) portal is used for the Students to report their Grievance and issues if they affected by some difficulties. Student can report their Complaints under University/College/Department levels based on their Complaints the Action will be taken by the Committee Members.
+
+A committee member will read the Students Complaints and they validate the complaints.based on the validation committee member will mark it read, spam, reply through email, and the Complaints will be taken to the  Head if the issues go on serious. The Head will take action under the Government of AP.
     </p>
   </div>
   <div class="copyright-notes">
