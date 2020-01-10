@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php
 
+session_start();
+$_SESSION["logged_in"] = true;       
+$userid = $_SESSION["userid"];
+$name = $_SESSION["name"];
+$usr = $_SESSION["usr"];
+?>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/style2.css" rel="stylesheet">
+  <link href="../css/styles2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -48,7 +55,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "test_1";
+        $dbname = "sgss";
 
         $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
         if (!$conn) {
@@ -56,7 +63,7 @@
         }
         
         $id = $_REQUEST["id"];
-        $sql = "SELECT * FROM test_1.test where id = $id";
+        $sql = "SELECT * FROM sgss.complaints where id = $id";
         $result = mysqli_query($conn, $sql);
         $report = mysqli_fetch_assoc($result);
 ?>
@@ -68,8 +75,8 @@
       <button class="dropbtn"><span class="user-info">
         <span class="info-text">
         <p>
-          User <br />
-          Student
+          <?php echo $name; ?> <br />
+          <?php echo $usr; ?>
         </p>
         </span>
         <span class="img-user">
@@ -79,7 +86,7 @@
     </button>
     <div class="dropdown-content-user">
       <a href="#"> My Profile</a>
-      <a href="#"> Log out</a>
+      <a href="../logout.php"> Log out</a>
     </div>
   </div>
 </head>
@@ -125,7 +132,6 @@
       <textarea readonly class="message-box">
         <?php 
           echo $report["description"];
-          mysqli_query($conn, "UPDATE test_1.test SET sts = 'Read' WHERE id = $id && sts = 'Unread'");
         ?>
       </textarea>
     </div>

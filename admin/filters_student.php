@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <?php
-session_start();        
-// $userid = $_GET["userid"];
-$userid = "user1";
+session_start();
+$_SESSION["logged_in"] = true;        
+$userid = $_SESSION["userid"];
+$name = $_SESSION["name"];
+$usr = $_SESSION["usr"];
+// echo $name;
+// echo $userid;
 $category = $_REQUEST["category"];
 $level = $_REQUEST["level"];
 $status = $_REQUEST["status"];
@@ -19,7 +23,7 @@ $status = $_REQUEST["status"];
   <link href="../css/styles1.css" rel="stylesheet">
   <script src="../js/sort-table.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Complaints</title>
+  <title>My Complaints</title>
   <header class="top-bar">
     <span class="title-left-pane">
       <span class="logo">
@@ -56,14 +60,14 @@ $status = $_REQUEST["status"];
   </header>
   <div class="heading">
     <span class="page-head">
-      INBOX
+      My Complaints
     </span>
     <span class="dropdown-user">
       <button class="dropbtn"><span class="user-info">
         <span class="info-text">
         <p>
-          User <br />
-          Student
+          <?php echo $name; ?> <br />
+          <?php echo $usr; ?>
         </p>
         </span>
         <span class="img-user">
@@ -73,7 +77,7 @@ $status = $_REQUEST["status"];
     </button>
     <div class="dropdown-content-user">
       <a href="#"> My Profile</a>
-      <a href="#"> Log out</a>
+      <a href="../logout.php"> Log out</a>
     </div>
   </div>
 </head>
@@ -109,10 +113,7 @@ $status = $_REQUEST["status"];
           <select id = "SF" class="categories-list">
             <div class="options">
               <option class="option" value="All">All</option>
-              <option class="option" value="Unread">Unread</option>
-              <option class="option" value="Read">Read</option>
               <option class="option" value="Completed">Completed</option>
-              <option class="option" value="Sent">Sent</option>
               <option class="option" value="Responded">Responded</option>
               <option class="option" value="Withdrawn">Withdrawn</option>
             </div>
@@ -149,7 +150,7 @@ $status = $_REQUEST["status"];
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "test_1";
+        $dbname = "sgss";
 
         $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
         if (!$conn) {
@@ -159,33 +160,35 @@ $status = $_REQUEST["status"];
         if (strcmp($level, "All") == 0) {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
           else {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             }
           }
         } else {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0) {
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& level=\"" . $level . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           } else {
             if (strcmp($status, "All") == 0) { 
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE userid = \"" . $userid . "\" level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE userid = \"" . $userid . "\"&& level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
         }
+
+        // echo $sql;
 
         $result = mysqli_query($conn, $sql);
 
@@ -218,13 +221,21 @@ $status = $_REQUEST["status"];
           $i=0;
         } 
 
-        $result = mysqli_query($conn, "SELECT * FROM test_1.test");
-        echo "Showing " . $i .  " result(s) out of  total " . mysqli_num_rows($result) . " records.";
+        $result = mysqli_query($conn, "SELECT * FROM sgss.complaints");
+        echo "Showing " . $i .  " result(s).";
         
         mysqli_close($conn);   
        ?>   
       </span>
     </table>
+    <div class="buttons-pane">
+      <span class ="button-left">
+        <button class="button-gen" onclick="window.location.replace('../new.php');">
+          <span class="button-icon"><i class="material-icons-outlined md-18">add_circle_outline</i></span>
+          <span class="button-text">New Complaint</span>
+        </button>
+      </span>
+    </div>
   </div>
 
 </body>

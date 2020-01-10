@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+
+session_start();
+$_SESSION["logged_in"] = true;       
+$userid = $_SESSION["userid"];
+$name = $_SESSION["name"];
+$usr = $_SESSION["usr"];
+?>
+
+
 <html lang="en">
 
 <head>
@@ -7,7 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/style2.css" rel="stylesheet">
+  <link href="../css/styles2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -48,7 +58,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "test_1";
+        $dbname = "sgss";
 
         $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
         if (!$conn) {
@@ -57,7 +67,7 @@
 
         
         $id = $_REQUEST["id"];
-        $sql = "SELECT * FROM test_1.test where id = $id";
+        $sql = "SELECT * FROM sgss.complaints where id = $id";
         $result = mysqli_query($conn, $sql);
         $report = mysqli_fetch_assoc($result);
         
@@ -72,8 +82,8 @@
       <button class="dropbtn"><span class="user-info">
         <span class="info-text">
         <p>
-          User <br />
-          Committee Member
+          <?php echo $name; ?> <br />
+          <?php echo $usr; ?>
         </p>
         </span>
         <span class="img-user">
@@ -83,7 +93,7 @@
     </button>
     <div class="dropdown-content-user">
       <a href="#"> My Profile</a>
-      <a href="#"> Log out</a>
+      <a href="../logout.php"> Log out</a>
     </div>
   </div>
 </head>
@@ -129,14 +139,16 @@
       <textarea readonly class="message-box">
         <?php 
           echo $report["description"];
-          mysqli_query($conn, "UPDATE test_1.test SET sts = 'Read' WHERE id = $id && sts = 'Unread'");
-          
+          if (strcmp($report["sts"], 'Unread') || strcmp($report["sts"], 'Pending')) {
+            
           $to_email = $row["email"];
           $headers = 'From: noreply@sgss.com';
           $subject = 'Your complaint was validated.';
           $message = 'Hi,' . $to_email . ', your complaint about ' . $row["subject"] . "was recieved and read by a committee member. Actions to resolve your issue will be taken shortly. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
           
           mail($to_email,$subject,$message,$headers);
+        }
+          mysqli_query($conn, "UPDATE sgss.complaints SET sts = 'Read' WHERE id = $id && sts = 'Unread'");
         ?>
       </textarea>
     </div>
@@ -182,7 +194,7 @@
       </span>
 
       <span class="button-right">
-        <?php echo "<button onclick=window.location.replace(\"reply.php?id=". $id ."\"); class=\"button-reply\">" ?>
+        <?php echo "<button onclick=window.location.replace(\"reply.php?id=". $id ."&from=Member\"); class=\"button-reply\">" ?>
           <span class="button-icon"><i class="material-icons-outlined md-18">message</i></span>
           <span class="button-text">Reply</span>
         </button>

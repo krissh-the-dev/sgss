@@ -148,7 +148,7 @@
   border-radius: 150px;
   background-color: blueviolet;
   font-family: "Source Sans Pro";
-  font-size: 30px;
+  font-size: 20px;
   color: white;
 }
 
@@ -186,6 +186,12 @@ body {
 
 .container {
   width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.container-special {
+  width: 40%;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -410,4 +416,106 @@ footer .copyright-notes {
 
 .dropdown-user:hover .dropdown-content-user {
   display: block;
+}
+
+.buttons-pane {
+  margin: 15px;
+}
+
+.button-gen {
+  width: 200px;
+  background-color: transparent;
+  color: rgb(0, 110, 255);
+  border-radius: 150px;
+  border: 1px solid rgb(0, 110, 255);
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 19px;
+  padding: 8px 10px 5px 10px;
+  /* margin-left: 40px;
+  margin-right: 40px; */
+  margin-top: 15px;
+}
+
+.button-gen:hover {
+  background-color: rgb(0, 110, 255);
+  color: white;
+}
+
+.button-icon {
+  float: left;
+  margin-right: 5px;
+}
+
+.button-text {
+  float: inline;
+}
+
+.text-box {
+  border-radius: 150px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 400px;
+  border: 1px solid blueviolet;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.text-box-err {
+  border-radius: 150px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 400px;
+  border: 1px solid rgb(255, 0, 55);
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.num-box {
+  border-radius: 150px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 100px;
+  border: 1px solid blueviolet;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.text-box:hover {
+  border-width: 2px;
+}
+
+.text-pass {
+  border-radius: 150px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 200px;
+  border: 1px solid blueviolet;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.text-pass-err {
+  border-radius: 150px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 200px;
+  border: 1px solid rgb(255, 0, 55);
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.text-pass:hover {
+  border-width: 2px;
+}
+
+textarea {
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+  min-height: 200px;
+  min-width: 90%;
+  max-width: 90%;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
 }

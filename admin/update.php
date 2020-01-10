@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Refresh" content="2; filters.php?level=All&category=All&status=All" />
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles1.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
   <title>Update</title>
 </head>
@@ -18,7 +18,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "test_1";
+        $dbname = "sgss";
 
         $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
         if (!$conn) {
@@ -29,16 +29,16 @@
         $cms = $_REQUEST["cmd"];
         // $email = $_GET["mail"];
 
-        $sql = "SELECT * FROM test_1.test where id = $id";
+        $sql = "SELECT * FROM sgss.complaints where id = $id";
 
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($res);
 
-        $cmd = "UPDATE test_1.test SET sts = '$cms' WHERE id = $id";
+        $cmd = "UPDATE sgss.complaints SET sts = '$cms' WHERE id = $id";
         $result = mysqli_query($conn, $cmd);
 
         if (strcmp($cms, "Sent") == 0) {
-          $cmd = "UPDATE test_1.test SET hsts = 'Unread' WHERE id = $id";
+          $cmd = "UPDATE sgss.complaints SET hsts = 'Unread' WHERE id = $id";
           $result = mysqli_query($conn, $cmd);  
         }
 
@@ -70,9 +70,11 @@
         $headers = 'From: noreply@sgss.com';
         mail($to_email,$subject,$message,$headers);
   ?>
+  <div class="container-special">
   <div class = "load">
-  <img class = "load-img" src = "../assets/load.gif" alt= ""><br>
+  <img class = "load-img" src = "../assets/load.gif" alt= "" width="50%"><br>
   <h2 class = "load-text">Updating your changes...</h2>
+  </div>
   </div>
 </body>
 

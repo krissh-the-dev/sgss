@@ -52,6 +52,7 @@
 .nav {
   float: inline;
   background-color: blueviolet;
+  /* position: fixed; */
 }
 
 .nav-bar h2 {
@@ -148,7 +149,7 @@
   border-radius: 150px;
   background-color: blueviolet;
   font-family: "Source Sans Pro";
-  font-size: 30px;
+  font-size: 20px;
   color: white;
 }
 

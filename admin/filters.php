@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
-session_start();        
+session_start();
+$_SESSION["logged_in"] = true;       
+$userid = $_SESSION["userid"];
+$name = $_SESSION["name"];
+$usr = $_SESSION["usr"]; 
 $category = $_REQUEST["category"];
 $level = $_REQUEST["level"];
 $status = $_REQUEST["status"];
@@ -60,8 +64,8 @@ $status = $_REQUEST["status"];
       <button class="dropbtn"><span class="user-info">
         <span class="info-text">
         <p>
-          User <br />
-          Committee Member
+          <?php echo $name; ?> <br />
+          <?php echo $usr; ?>
         </p>
         </span>
         <span class="img-user">
@@ -71,7 +75,7 @@ $status = $_REQUEST["status"];
     </button>
     <div class="dropdown-content-user">
       <a href="#"> My Profile</a>
-      <a href="#"> Log out</a>
+      <a href="../logout.php"> Log out</a>
     </div>
   </div>
 </head>
@@ -108,6 +112,7 @@ $status = $_REQUEST["status"];
             <div class="options">
               <option class="option" value="All">All</option>
               <option class="option" value="Unread">Unread</option>
+              <option class="option" value="Pending">Pending</option>
               <option class="option" value="Read">Read</option>
               <option class="option" value="Completed">Completed</option>
               <option class="option" value="Sent">Sent</option>
@@ -146,7 +151,7 @@ $status = $_REQUEST["status"];
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "test_1";
+        $dbname = "sgss";
 
         $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
         if (!$conn) {
@@ -156,30 +161,30 @@ $status = $_REQUEST["status"];
         if (strcmp($level, "All") == 0) {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
           else {
             if (strcmp($status, "All") == 0){
-              $sql = "SELECT * FROM test_1.test WHERE category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE sts=\"" . $status . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             }
           }
         } else {
           if (strcmp($category, "All") == 0) {
             if (strcmp($status, "All") == 0) {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE level=\"" . $level . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE level=\"" . $level . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           } else {
             if (strcmp($status, "All") == 0) { 
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE level=\"" . $level . "\" && category=\"" . $category . "\" ORDER BY date DESC";
             } else {
-              $sql = "SELECT * FROM test_1.test WHERE level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
+              $sql = "SELECT * FROM sgss.complaints WHERE level=\"" . $level . "\" && category=\"" . $category . "\" && sts=\"" . $status . "\" ORDER BY date DESC";
             }
           }
         }
@@ -215,7 +220,7 @@ $status = $_REQUEST["status"];
           $i=0;
         } 
 
-        $result = mysqli_query($conn, "SELECT * FROM test_1.test");
+        $result = mysqli_query($conn, "SELECT * FROM sgss.complaints");
         echo "Showing " . $i .  " result(s) out of  total " . mysqli_num_rows($result) . " records.";
         
         mysqli_close($conn);   
