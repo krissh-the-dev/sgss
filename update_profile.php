@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+  session_start();
+  $curr_id=$_SESSION["userid"];
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -35,30 +37,27 @@
     $pwd=$_POST["pwd"];
     $userid= $mail;
 
-    $cmf = "SELECT * FROM sgss.users WHERE userid='$userid'";
-    $res = mysqli_query($conn, $cmf);
-    $rws = mysqli_num_rows($res);
-    
-    if ($rws == 1) {
-      header("Location: signup_error.html");
-      exit ;
-    }
+    $sql = "UPDATE sgss.users SET userid ='$userid', username='$name', age='$age', gender='$sex', university='$univ', college='$clg', department='$dept', email='$mail', mobile='$mob', password='$pwd' WHERE userid='$curr_id'";
 
-    $sql = "INSERT INTO sgss.users(userid,username,age,gender,university,college,department,email,mobile,password) VALUES ('$userid', '$name', '$age', '$sex', '$univ', '$clg', '$dept', '$mail', '$mob', '$pwd')";
+    $upcomps = "UPDATE sgss.complaints SET userid='$userid', email='$mail' WHERE userid = '$curr_id'";
 
     // echo $sql;
     $result = mysqli_query($conn, $sql);
+    $result2 = mysqli_query($conn, $upcomps);
+    // $ros = mysqli_num_rows($result2);
+    
     
     $to_email = $userid;
-    $subject = 'Account created successfully';
-    $message = 'Hi ' . $name . ", your account on Students' Grievance Support System was created successfully.\nRegards, \nSGSS Team, \nGovernment of AP.";
+    $subject = 'Account updated successfully';
+    $message = 'Hi ' . $name . ", your account on Students' Grievance Support System was updated successfully.\nRegards, \nSGSS Team, \nGovernment of AP.";
     $headers = 'From: noreply@sgss.com';
     mail($to_email,$subject,$message,$headers);
+    mail($curr_id,$subject,$message,$headers);
   ?>
   <div class="container-special">
   <div class = "load">
   <img class = "load-img" src = "assets/load.gif" alt= "" width="50%"><br>
-  <h2 class = "load-text">Creating your account...</h2>
+  <h2 class = "load-text">Updating your profile...</h2>
   </div>
   </div>
 </body>

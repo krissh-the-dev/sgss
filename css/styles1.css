@@ -481,7 +481,7 @@ footer .copyright-notes {
 }
 
 .text-box:hover {
-  border-width: 2px;
+  border: 1px solid rgb(0, 110, 255);
 }
 
 .text-pass {
@@ -505,7 +505,7 @@ footer .copyright-notes {
 }
 
 .text-pass:hover {
-  border-width: 2px;
+  border: 1px solid rgb(0, 110, 255);
 }
 
 textarea {

@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
+  <link rel="icon" 
+      type="image/png" 
+      href="assets/logo.png">
   <link href="css/styles1.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Login | SGSS</title>
@@ -33,13 +36,13 @@
           <span class="dropdown">
             <button class="dropbtn"><i class="material-icons-outlined md-18">menu</i></button>
             <div class="dropdown-content">
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <a href="about.html">About</a>
+              <a href="Contact.html">Contact</a>
               <a href="#">More</a>
             </div>
           </span>
           <a class="nav-links" href="help.html"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="home.php"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
@@ -55,6 +58,19 @@
   <div class="container-special">
     <form action="validate.php?usr=<?php echo $_REQUEST["usr"];?>" method="POST">
 
+      I am a<br>
+      <select id="selUsr" class="categories-list" style="margin-bottom:5px;" onchange="
+        var  a = document.getElementById('selUsr');
+        var usr = a.options[a.selectedIndex].value;
+        var link = 'login.php?usr=' + usr;
+        console.log(link);
+        window.location.replace(link);
+      ">
+        <option class="option" value="Student">Student</option>
+        <option class="option" value="Member">Member</option>
+        <option class="option" value="Head">Head</option>
+      </select><br>
+
       Email ID: <br> <input type="text" name="userid" class="text-box" required></input><br />
       Password: <br> <input type="password" name="pwd" class="text-pass" required></input><br>
       <button class="button-gen" type="submit">
@@ -65,15 +81,17 @@
 
     <br>
     <a href="signup.html">Sign Up</a> | <a href="forgot.html">Forgot Password</a>
+    <br>
+    <br>
+      Make sure you select the current user type from "I am a" list box.
   </div>
 </body>
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="home.html">Home</a> |
+      <a href="home.php">Home</a> |
       <a href="Contact.html">Contact</a> |
-      <a href="Feedback.html">Feedback</a> |
-      <a href="privacy.html">Privacy</a>
+      <a href="Feedback.html">Feedback</a>
     </p>
   </div>
   <div class="contents">
@@ -89,5 +107,10 @@ A committee member will read the Students Complaints and they validate the compl
     </span c>
   </div>
 </footer>
-
+<script>
+  jQuery(document).ready(function(){
+    <?php $usr = $_REQUEST["usr"];?>
+   document.getElementById("selUsr").value = <?php echo "\"" . $usr . "\"" ?>;
+  });
+  </script>
 </html>

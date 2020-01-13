@@ -44,14 +44,16 @@ $usr = $_SESSION["usr"];
     $keyword= 'Unspecified';
     $sts= 'Unread';
 
-    $food=array('food', 'salt', 'spoilt', 'bitter', 'sour', 'hygene');
+    
+    $adm = array('office', 'waiting', 'time', 'OP', 'pass', 'guidance', 'admin');
+    $food=array('food', 'salt', 'spoilt', 'bitter', 'sour', 'hygene', 'oil');
     $infrastructure=array('infrastructure', 'class', 'room', 'board', 'labs', 'playground', 'court', 'building');
-    $facilities=array('facilities', 'bathroom', 'toilet', 'mess', 'canteen', 'lab', 'library', 'transport', 'water');
-    $environment=array('environment', 'tree', 'pollut', 'plant', 'thorn');
-    $maintenance=array('maintenance', 'neat', 'lock', 'broom', 'wash', 'clean', 'dirty');
-    $staff = array('staff', 'punctual', 'attentive', 'misbehave', 'knowledge', 'late');
+    $facilities=array('facilities', 'bathroom', 'toilet', 'mess', 'canteen', 'lab', 'library', 'transport', 'water', 'tap');
+    $environment=array('environment', 'tree', 'pollut', 'plant', 'thorn', 'loud', 'nois');
+    $maintenance=array('maintenance', 'neat', 'lock', 'broom', 'wash', 'clean', 'dirty', 'cleanliness');
+    $staff = array('staff', 'punctual', 'attentive', 'misbehave', 'knowledge', 'late', 'dress', 'lecture', 'understand', 'prof', 'conduct');
     $drugs = array('drugs', 'alcohol', 'weed', 'tobacco', 'smoke');
-    $money = array('commerce', 'money', 'fees', 'currupt', 'cash');
+    $money = array('commerce', 'money', 'fees', 'currupt', 'cash', 'amount');
 
     $keyarrays= array($food, $infrastructure, $facilities, $environment, $maintenance, $drugs, $staff, $money);
 

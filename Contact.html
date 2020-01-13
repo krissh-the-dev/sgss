@@ -7,12 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link rel="icon" 
-      type="image/png" 
-      href="assets/logo.png">
   <link href="css/styles1.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Login | SGSS</title>
+  <!-- <link href="complaints.css" rel="stylesheet"> -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <title>Contact us</title>
   <header class="top-bar">
     <span class="title-left-pane">
       <span class="logo">
@@ -48,27 +47,51 @@
     </span>
   </header>
   <div class="heading">
-    <span class="page-head">
-      Login
-    </span>
+    <div class="page">
+      <span class="page-head">
+        Contact Us
+      </span>
+    </div>
+
   </div>
+  <style>
+    .box-about {
+      padding-left: 18px;
+      padding-right: 200px;
+      padding-bottom: 30px;
+
+      font-size: 18px;
+      font-style: bold;
+      text-align: center;
+    }
+
+    .box-about img {
+      padding-top: 30px;
+      padding-left: 100px;
+    }
+
+    p {
+      padding-top: 30px;
+      padding-left: 200px;
+    }
+  </style>
+
 </head>
 
 <body>
-  <div class="container-special">
-    <form action="validate.php?usr=<?php echo $_REQUEST["usr"];?>" method="POST">
-
-      Email ID: <br> <input type="text" name="userid" class="text-box-err" required></input><br />
-      Password: <br> <input type="password" name="pwd" class="text-pass-err" required></input><br>
-      <button class="button-gen" type="submit">
-        <span class="button-icon"><i class=" material-icons-outlined md-18">arrow_forward</i></span>
-        <span class="button-text">Login</span>
-      </button>
-    </form>
-
-    <br>
-    Wrong email id or password. <br>
-    <a href="signup.html">Sign Up</a> | <a href="forgot.html">Forgot Password</a>
+  <h1 style="text-align:center; color:black; padding-top:30px; padding-bottom:30px;">Students Grievance Support System
+  </h1>
+  <div class="box-about">
+    <img alt="andra image" style="padding-top:30px;
+padding-left:200px; padding-bottom:20px;" src="assets/univ.jpg" width="50%">
+    <p>Contact.no: 9856745678</p>
+    <p>Alternate.no: 9856745677</p>
+    <p>Email ID: sgss.ap@gmail.com</p>
+    <p>Feedbacks: febacksgss@gmail.com</p>
+    <p>Address: Head office, Government of Andra Pradesh</p>
+    <p>Working time: 9.00am to 6.00pm</p>
+    <p><b>Student will call and get clear about any doubts about this software<br> at working hours only, our staffs will help you....<br></b></p>
+    <p>
   </div>
 </body>
 <footer class="footer">
@@ -79,17 +102,11 @@
       <a href="Feedback.html">Feedback</a>
     </p>
   </div>
-  <div class="contents">
-    <p class="footer-text">
-      The Student Grievance Support System (SGSS) portal is used for the Students to report their Grievance and issues if they affected by some difficulties. Student can report their Complaints under University/College/Department levels based on their Complaints the Action will be taken by the Committee Members.
 
-A committee member will read the Students Complaints and they validate the complaints.based on the validation committee member will mark it read, spam, reply through email, and the Complaints will be taken to the  Head if the issues go on serious. The Head will take action under the Government of AP.
-    </p>
-  </div>
   <div class="copyright-notes">
     <span class="copyight-info">
       &copy; All rights reserved. 2019-2020, Government of AP.
-    </span c>
+    </span>
   </div>
 </footer>
 

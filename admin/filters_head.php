@@ -18,7 +18,9 @@ $status = $_REQUEST["status"];
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles1.css" rel="stylesheet">
+  <link rel="icon" 
+      type="image/png" 
+      href="../assets/logo.png"><link href="../css/styles1.css" rel="stylesheet">
   <script src="../js/sort-table.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Complaints</title>
@@ -45,13 +47,13 @@ $status = $_REQUEST["status"];
           <span class="dropdown">
             <button class="dropbtn"><i class="material-icons-outlined md-18">menu</i></button>
             <div class="dropdown-content">
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <a href="../about.html">About</a>
+              <a href="../Contact.html">Contact</a>
               <a href="#">More</a>
             </div>
           </span>
-          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="../help.html"><i class="material-icons-outlined md-18">help_outline</i></a>
+          <a class="nav-links" href="../home.php"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
@@ -74,7 +76,6 @@ $status = $_REQUEST["status"];
       </span>
     </button>
     <div class="dropdown-content-user">
-      <a href="#"> My Profile</a>
       <a href="../logout.php"> Log out</a>
     </div>
   </div>
@@ -100,8 +101,8 @@ $status = $_REQUEST["status"];
               <option class="option" value="Exams">Exams</option>
               <option class="option" value="Finance">Finance</option>
               <option class="option" value="Lecture">Lecture</option>
-              <option class="option" value="Revaluation">Revaluation</option>
               <option class="option" value="Ragging">Ragging</option>
+              <option class="option" value="Syllabus">Syllabus</option>
               <option class="option" value="Other">Other</option>
             </div>
           </select>
@@ -233,10 +234,10 @@ $status = $_REQUEST["status"];
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="../home.html">Home</a> |
-      <a href="Contact.html">Contact</a> |
-      <a href="Feedback.html">Feedback</a> |
-      <a href="privacy.html">Privacy</a>
+      <a href="../home.php">Home</a> |
+      <a href="../Contact.html">Contact</a> |
+      <a href="../Feedback.html">Feedback</a> |
+      <a href="../privacy.html">Privacy</a>
     </p>
   </div>
   <div class="contents">

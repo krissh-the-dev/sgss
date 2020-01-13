@@ -17,7 +17,9 @@ $usr = $_SESSION["usr"];
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
-  <link href="../css/styles2.css" rel="stylesheet">
+  <link rel="icon" 
+      type="image/png" 
+      href="../assets/logo.png"><link href="../css/styles2.css" rel="stylesheet">
   <title>Subject</title>
   <header class="top-bar">
     <span class="title-left-pane">
@@ -42,13 +44,13 @@ $usr = $_SESSION["usr"];
           <span class="dropdown">
             <button class="dropbtn"><i class="material-icons-outlined md-18">menu</i></button>
             <div class="dropdown-content">
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <a href="../about.html">About</a>
+              <a href="../Contact.html">Contact</a>
               <a href="#">More</a>
             </div>
           </span>
-          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="../help.html"><i class="material-icons-outlined md-18">help_outline</i></a>
+          <a class="nav-links" href="../home.php"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
@@ -92,7 +94,6 @@ $usr = $_SESSION["usr"];
       </span>
     </button>
     <div class="dropdown-content-user">
-      <a href="#"> My Profile</a>
       <a href="../logout.php"> Log out</a>
     </div>
   </div>
@@ -206,10 +207,10 @@ $usr = $_SESSION["usr"];
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="../home.html">Home</a> |
-      <a href="Contact.html">Contact</a> |
-      <a href="Feedback.html">Feedback</a> |
-      <a href="privacy.html">Privacy</a>
+      <a href="../home.php">Home</a> |
+      <a href="../Contact.html">Contact</a> |
+      <a href="../Feedback.html">Feedback</a> |
+      <a href="../privacy.html">Privacy</a>
     </p>
   </div>
   <div class="contents">

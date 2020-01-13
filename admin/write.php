@@ -47,7 +47,7 @@
         $subject = 'Reply from Students\' Grievance Support System';
         $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was validated.\nOur " . $from . " replied you as follows:\n" . $cms;
         
-        $cmd = "UPDATE sgss.complaints SET sts = 'Responed' WHERE id = $id";
+        $cmd = "UPDATE sgss.complaints SET sts = 'Responded' WHERE id = $id";
         $result = mysqli_query($conn, $cmd);
 
         // echo $message;

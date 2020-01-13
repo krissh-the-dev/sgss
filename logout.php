@@ -5,6 +5,6 @@ $_SESSION["logged_in"] = false;
 session_destroy();
 session_abort();
 
-header("Location: home.html");
+header("Location: home.php");
 ?>
 

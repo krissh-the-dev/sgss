@@ -61,7 +61,7 @@
 
           case "Completed":
             $subject = 'Your complaint was validated.';
-            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and a curresponding action to resolve the issue was made by a committee member. We hope your issue was resolved. We really appriciate that you stepped forward to report the issue. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
+            $message = 'Hi, ' . $to_email . ', your complaint about ' . $row["subject"] . " was recieved and a corresponding action to resolve the issue was made by a committee member. We hope your issue was resolved. We really appriciate that you stepped forward to report the issue. Thank you for reporting us.\nRegards,\nStudents Grievance Support System,\nGovernment of AP.";
           break;
           default:
             $subject = 'Testing PHP Mail';

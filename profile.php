@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php
+  session_start();
+  $userid=$_SESSION["userid"];
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "sgss";
+  $conn = mysqli_connect("$servername", "$username", "$password", "$dbname");
+  if (!$conn) {
+     die("Connection failed: " . mysqli_connect_error());
+  }
+?>
 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600&display=swap" rel="stylesheet">
+  <link rel="icon" 
+      type="image/png" 
+      href="assets/logo.png">
   <link href="css/styles1.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Sign up | SGSS</title>
+  <title>My Profile | SGSS</title>
   <header class="top-bar">
     <span class="logo">
       <img class="header-image" src="assets/logo_p.png" alt="Government of Andra Pradesh"></img>
@@ -27,54 +42,70 @@
           <span class="dropdown">
             <button class="dropbtn"><i class="material-icons-outlined md-18">menu</i></button>
             <div class="dropdown-content">
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <a href="about.html">About</a>
+              <a href="Contact.html">Contact</a>
               <a href="#">More</a>
             </div>
           </span>
-          <a class="nav-links" href="help.php"><i class="material-icons-outlined md-18">help_outline</i></a>
-          <a class="nav-links" href="../home.html"><i class="material-icons-outlined md-18">home</i></a>
+          <a class="nav-links" href="help.html"><i class="material-icons-outlined md-18">help_outline</i></a>
+          <a class="nav-links" href="home.php"><i class="material-icons-outlined md-18">home</i></a>
         </span>
       </h2>
     </span>
   </header>
   <div class="heading">
     <span class="page-head">
-      Sign up
+      My Profile
     </span>
   </div>
 </head>
 
 <body>
   <div class="container-special">
-    <form action="register.php" onsubmit="return checkPass(this);" method="POST">
-
-      Name:<br> <input type="text" class="text-box" name="name" value="" readonly></input><br />
-      Age:<br> <input type="number" class="num-box" name="age" value="" readonly></input><br />
+  <?php
+    $q = "SELECT * FROM sgss.users WHERE userid='$userid'";
+    $res = mysqli_query($conn, $q);
+    $row = mysqli_fetch_assoc($res);
+  ?>
+    <form action="update_profile.php" onsubmit="return checkPass(this);" method="POST">
+      Name:<br> <input type="text" class="text-box" name="name" value="<?php echo $row["username"];?>" required></input><br />
+      Age:<br> <input type="number" class="num-box" name="age" value="<?php echo $row["age"];?>" required></input><br />
       Gender:<br>
-      <select class="categories-list" name="sex" readonly>
+      <select class="categories-list" name="sex" required>
         <option class="" value="Male">Male</option>
         <option class="" value="Female">Female</option>
         <option class="" value="Other">Other</option>
       </select>
       <br />
-      University:<br> <input type="text" class="text-box" name="univ" value="" readonly></input><br />
-      College:<br> <input type="text" class="text-box" name="clg" value="" readonly></input><br />
-      Department:<br> <input type="text" class="text-box" name="dept" value="" readonly></input><br />
-      E-Mail:<br> <input type="email" class="text-box" name="mail" value="" readonly></input><br />
-      Mobile:<br> <input type="tel" class="text-pass" name="mob" value="" readonly></input><br />
-      Password:<br> <input id="orp" type="password" class="text-pass" value="" name="pwd" readonly></input><br>
-      Re-enter password:<br> <input id="dup" type="password" class="text-pass" value="" name="cpwd" readonly></input><br>
+      University:<br> <input type="text" class="text-box" name="univ" value="<?php echo $row["university"];?>" required></input><br />
+      College:<br> <input type="text" class="text-box" name="clg" value="<?php echo $row["college"];?>" required></input><br />
+      Department:<br> <input type="text" class="text-box" name="dept" value="<?php echo $row["department"];?>" required></input><br />
+      E-Mail:<br> <input type="email" class="text-box" name="mail" value="<?php echo $row["email"]?>" required></input><br />
+      Mobile:<br> <input type="tel" class="text-pass" name="mob" value="<?php echo $row["mobile"];?>" required></input><br />
+      Password:<br> <input id="orp" type="text" class="text-pass" value="<?php echo $row["password"];?>" name="pwd" required></input><br>
+      
+      Re-enter password:<br> <input id="orp" type="text" class="text-pass" value="<?php echo $row["password"];?>" name="pwd" required></input><br>
+      <button class="button-gen" type="submit">
+        <span class="button-icon"><i class=" material-icons-outlined md-18">cloud_done</i></span>
+        <span class="button-text">Save Changes</span>
+      </button>
+
     </form>
+    <span class="button-left" style="margin-left: -50px;">
+      <button class="button-gen" onclick="window.location.replace('profile.php');" style="margin-left: 50px;">
+        <span class="button-icon"><i class=" material-icons-outlined md-18">refresh</i></span>
+        <span class="button-text">Reset</span>
+      </button>
+    </span>
   </div>
 </body>
 <footer class="footer">
   <div class="quick-links">
     <p>
-      <a href="../home.html">Home</a> |
-      <a href="Contact.html">Contact</a> |
-      <a href="Feedback.html">Feedback</a> |
-      <a href="privacy.html">Privacy</a>
+      <a href="../home.php">Home</a> |
+      <a href="../Contact.html">Contact</a> |
+      <a href="../Feedback.html">Feedback</a> |
+      <a href="../privacy.html">Privacy</a>
     </p>
   </div>
   <div class="contents">
